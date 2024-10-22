@@ -9,3 +9,6 @@ lint:
 
 start:
 	python manage.py runserver
+
+deploy:
+	poetry run gunicorn task_manager.wsgi
