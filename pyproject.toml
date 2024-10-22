@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "hexlet-code"
+version = "0.1.0"
+description = "Task Manager"
+authors = ["Evgeny <info@tinamagic.lv>"]
+readme = "README.md"
+packages = [{include = "task_manager"}]
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
