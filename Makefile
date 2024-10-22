@@ -1,14 +1,28 @@
+MANAGE := poetry run python manage.py
+
+.PHONY: test
+test:
+	@poetry run pytest
+
+.PHONY: setup
+setup: db-clean install migrate
+
+.PHONY: install
 install:
-	poetry install
+	@poetry install
 
-build: 
-	poetry build
+.PHONY: db-clean
+db-clean:
+	@rm db.sqlite3 || true
 
+.PHONY: migrate
+migrate:
+	@$(MANAGE) migrate
+
+.PHONY: shell
+shell:
+	@$(MANAGE) shell_plus --ipython
+
+.PHONY: lint
 lint:
-	poetry run flake8 task_manager
-
-start:
-	python manage.py runserver
-
-deploy:
-	poetry run gunicorn task_manager.wsgi
+	@poetry run flake8 task_manager
