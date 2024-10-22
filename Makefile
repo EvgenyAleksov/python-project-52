@@ -6,3 +6,6 @@ build:
 
 lint:
 	poetry run flake8 task_manager
+
+start:
+	python manage.py runserver
