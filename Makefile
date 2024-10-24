@@ -1,3 +1,5 @@
+PORT ?= 10000
+
 MANAGE := poetry run python manage.py
 RUN := poetry run
 
