@@ -31,9 +31,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # DEBUG = os.getenv('DEBUG', 'False') == 'True'
 DEBUG = 'True'
 
-ALLOWED_HOSTS = ['webserver']
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'webserver',
+    '*',
+]
 
 # Application definition
 
