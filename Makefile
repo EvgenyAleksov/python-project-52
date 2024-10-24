@@ -27,4 +27,4 @@ start:
 	$(MANAGE) runserver
 
 deploy:
-	$(RUN) gunicorn task_manager.wsgi
+	gunicorn task_manager.wsgi --log-file -.
