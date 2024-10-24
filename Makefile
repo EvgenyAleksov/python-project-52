@@ -26,7 +26,7 @@ lint:
 
 start:
 	$(MANAGE) runserver
-	poetry run gunicorn --workers=5 --bind=0.0.0.0:$(PORT) task_manager.wsgi
 
-deploy:
-	$(RUN) gunicorn task_manager.wsgi
+ deploy:
+	$(RUN) gunicorn --workers=5 --bind=0.0.0.0:$(PORT) task_manager.wsgi
+#	$(RUN) gunicorn task_manager.wsgi

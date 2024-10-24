@@ -10,7 +10,7 @@
 
 # Менеджер задач
 
-[Посмотреть на render.com](https://python-project-83-fcn0.onrender.com/)
+[Посмотреть на render.com](https://python-project-52-fcn0.onrender.com/)
 
 **Менеджер задач** – это веб-приложение, которое позволяет:
 
