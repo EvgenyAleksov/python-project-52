@@ -1,4 +1,5 @@
 MANAGE := poetry run python manage.py
+RUN := poetry run
 
 test:
 	@poetry run pytest
@@ -22,3 +23,6 @@ lint:
 
 start:
 	$(MANAGE) runserver
+
+deploy:
+	$(RUN) gunicorn task_manager.wsgi
