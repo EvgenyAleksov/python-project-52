@@ -23,5 +23,8 @@ shell:
 lint:
 	@poetry run flake8 task_manager
 
+make dev:
+	$(MANAGE) runserver
+
 start:
 	$(RUN) gunicorn --workers=5 --bind=0.0.0.0:$(PORT) task_manager.wsgi
