@@ -4,6 +4,6 @@ dist/
 .coverage
 .env
 db.sqlite3
-
+task_manager/users/migrations/
 
 
