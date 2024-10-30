@@ -1,8 +1,5 @@
-{% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
-
 <!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="en">
 
 <head>
   {% load django_bootstrap5 %}
@@ -16,11 +13,11 @@
 <body class="d-flex flex-column min-vh-100">
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light ms-3">
-      <a class="navbar-brand" href="/">Менеджер задач</a>
+      <a class="navbar-brand" href="\">Менеджер задач</a>
       <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href=" ">Пользователи</a>
+            <a class="nav-link" href="{% url 'users' %}">Пользователи</a>
           </li>
         </ul>
         <ul class="navbar-nav">
