@@ -3,9 +3,8 @@
 
 {% block content %}
 <div class="container wrapper flex-grow-1">
-  <br>
   <h1>{{ title }}</h1>
-  <br>
+
   <form method="post">
     {% csrf_token %}
     {% bootstrap_form form %}
