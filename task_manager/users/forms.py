@@ -1,8 +1,7 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.forms import CharField
 
-
-from task_manager.users.models import User
+from .models import User
 
 
 class UserForm(UserCreationForm):
@@ -15,6 +14,12 @@ class UserForm(UserCreationForm):
         max_length=150,
         required=True,
         label='Фамилия')
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = (
+            'first_name', 'last_name', 'username', 'password1', 'password2'
+        )
 
     username = CharField(
         max_length=150,
@@ -38,7 +43,27 @@ class UserForm(UserCreationForm):
         help_text='Для подтверждения введите, пожалуйста,\
                           пароль ещё раз.')
 
-    class Meta(UserCreationForm.Meta):
+
+class UserUpdateForm(UserChangeForm):
+    first_name = CharField(label='Имя')
+
+    last_name = CharField(label='Фамилия')
+
+    username = CharField(label='Имя пользователя')
+
+    password = None
+
+    password1 = CharField(
+        label='Пароль',
+        strip=False)
+
+    password2 = CharField(
+        label='Подтверждение пароля',
+        strip=False,
+        help_text='Для подтверждения введите, пожалуйста,\
+                          пароль ещё раз.')
+
+    class Meta(UserChangeForm.Meta):
         model = User
         fields = (
             'first_name', 'last_name', 'username', 'password1', 'password2'
