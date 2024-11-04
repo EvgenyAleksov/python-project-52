@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-# import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
+# import dj_database_url
 
 load_dotenv()
 
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'task_manager',
     'task_manager.users',
-    # 'users.apps.UsersConfig',
+    'task_manager.statuses',
 ]
 
 MIDDLEWARE = [

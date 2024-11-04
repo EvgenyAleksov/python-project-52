@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.forms import CharField
 
-from .models import User
+from task_manager.users.models import User
 
 
 class UserForm(UserCreationForm):
