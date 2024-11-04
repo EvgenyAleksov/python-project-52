@@ -31,4 +31,3 @@ make dev:
 
 start:
 	$(RUN) gunicorn --workers=5 --bind=0.0.0.0:$(PORT) task_manager.wsgi
-	db.sqlite3
