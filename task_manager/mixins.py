@@ -1,5 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.views import RedirectURLMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse_lazy
+from django.shortcuts import redirect
 
 
 class ProjectRedirectURLMixin(RedirectURLMixin):
@@ -14,3 +17,29 @@ class ProjectRedirectURLMixin(RedirectURLMixin):
             elif self.info_message:
                 messages.info(self.request, self.info_message)
         return super().get_default_redirect_url()
+
+
+class ProjectLoginRequiredMixin(LoginRequiredMixin):
+    login_url = reverse_lazy('login')
+    denied_message = 'Вы не авторизованы! Пожалуйста, выполните вход.'
+
+    def handle_no_permission(self):
+        messages.error(self.request, self.denied_message)
+        return redirect(self.login_url)
+
+
+class ProjectUserPassesTestMixin(UserPassesTestMixin):
+    denied_url = None
+    permission_denied_message = None
+
+    def dispatch(self, request, *args, **kwargs):
+        user_test_result = self.get_test_func()()
+        if not user_test_result:
+            messages.error(self.request, self.permission_denied_message)
+            return redirect(self.denied_url)
+        return super().dispatch(request, *args, **kwargs)
+
+
+class HasPermissionUserChangeMixin(ProjectUserPassesTestMixin):
+    def test_func(self):
+        return self.get_object() == self.request.user
