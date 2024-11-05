@@ -16,7 +16,8 @@ from dotenv import load_dotenv
 import dj_database_url
 
 load_dotenv()
-
+# env_path = os.path.join('.', '.env')
+# load_dotenv(dotenv_path=env_path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,7 +36,6 @@ ALLOWED_HOSTS = [
     '*',
     'webserver',
 ]
-
 
 # Application definition
 
@@ -93,8 +93,9 @@ DATABASES = {
     }
 }
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+if os.getenv('DATABASE_URL'):
+    db_from_env = dj_database_url.config(conn_max_age=600)
+    DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
