@@ -6,9 +6,6 @@ RUN := poetry run
 install:
 	@poetry install
 
-build: 
-	./build.sh
-
 test:
 	@poetry run pytest
 
