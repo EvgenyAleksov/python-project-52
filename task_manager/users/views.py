@@ -13,6 +13,10 @@ class UsersListView(ListView):
     template_name = 'users/users.html'
     context_object_name = 'users'
 
+    def get_queryset(self):
+        users = User.objects.exclude(username='Evgeny')
+        return users
+
 
 class UserCreateView(SuccessMessageMixin, CreateView):
     model = User
