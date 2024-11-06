@@ -3,6 +3,7 @@ from django.contrib.auth.views import RedirectURLMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from django.views.generic.edit import FormMixin
 
 
 class ProjectRedirectURLMixin(RedirectURLMixin):
@@ -43,3 +44,16 @@ class ProjectUserPassesTestMixin(UserPassesTestMixin):
 class HasPermissionUserChangeMixin(ProjectUserPassesTestMixin):
     def test_func(self):
         return self.get_object() == self.request.user
+
+
+class HasPermissionTaskDeleteMixin(ProjectUserPassesTestMixin):
+    def test_func(self):
+        return self.get_object().author == self.request.user
+
+
+class ProjectFormMixin(FormMixin):
+    def get_context_data(self, **kwargs):
+        object = self.get_object()
+        context = super().get_context_data(**kwargs)
+        context['name'] = object.name
+        return context
