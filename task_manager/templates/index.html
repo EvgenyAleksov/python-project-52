@@ -9,7 +9,12 @@
       <div class="display-4">Менеджер задач</div>
         <p class="lead">Система управления задачами</p>
         <hr>
-        <a class="btn btn-primary btn-lg" >Начать</a>
+
+        {% if user.is_authenticated %}
+          <a class="btn btn-primary btn-lg" href="{% url 'task_create' %}">Начать</a>
+        {% else %}
+          <a class="btn btn-primary btn-lg" href="{% url 'login' %}">Начать</a>
+        {% endif %}
       </div>
     </div>
 </div>

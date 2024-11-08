@@ -45,10 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_bootstrap5',
+    'django_filters',
+    'rest_framework',
     'task_manager',
     'task_manager.users',
     'task_manager.statuses',
-    # 'task_manager.tasks',
+    'task_manager.tasks',
+    'task_manager.labels'
 ]
 
 MIDDLEWARE = [
@@ -92,9 +95,9 @@ DATABASES = {
     }
 }
 
-# if os.getenv('DATABASE_URL'):
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+if os.getenv('DATABASE_URL'):
+    db_from_env = dj_database_url.config(conn_max_age=600)
+    DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

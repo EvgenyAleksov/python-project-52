@@ -98,6 +98,41 @@ files = [
 Django = ">=4.2"
 
 [[package]]
+name = "djangorestframework"
+version = "3.15.2"
+description = "Web APIs for Django, made easy."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "djangorestframework-3.15.2-py3-none-any.whl", hash = "sha256:2b8871b062ba1aefc2de01f773875441a961fefbf79f5eed1e32b2f096944b20"},
+    {file = "djangorestframework-3.15.2.tar.gz", hash = "sha256:36fe88cd2d6c6bec23dca9804bab2ba5517a8bb9d8f47ebc68981b56840107ad"},
+]
+
+[package.dependencies]
+django = ">=4.2"
+
+[[package]]
+name = "djangorestframework-jsonapi"
+version = "7.1.0"
+description = "A Django REST framework API adapter for the JSON:API spec."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "djangorestframework_jsonapi-7.1.0-py2.py3-none-any.whl", hash = "sha256:506d7179b6c2d29c4b7879afb4cadf8b0bb468accd40787491875ad680b4993a"},
+    {file = "djangorestframework_jsonapi-7.1.0.tar.gz", hash = "sha256:487e4fe5a0590e655cb3af947c8cee7b54be8ced14a81aac53056f2c43a92343"},
+]
+
+[package.dependencies]
+django = ">=4.2"
+djangorestframework = ">=3.14"
+inflection = ">=0.5.0"
+
+[package.extras]
+django-filter = ["django-filter (>=2.4)"]
+django-polymorphic = ["django-polymorphic (>=3.0)"]
+openapi = ["pyyaml (>=5.4)", "uritemplate (>=3.0.1)"]
+
+[[package]]
 name = "flake8"
 version = "7.1.1"
 description = "the modular source code checker: pep8 pyflakes and co"
@@ -147,6 +182,17 @@ files = [
 [package.dependencies]
 babel = "*"
 py = "*"
+
+[[package]]
+name = "inflection"
+version = "0.5.1"
+description = "A port of Ruby on Rails inflector to Python"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "inflection-0.5.1-py2.py3-none-any.whl", hash = "sha256:f38b2b640938a4f35ade69ac3d053042959b62a0f1076a5bbaa1b9526605a8a2"},
+    {file = "inflection-0.5.1.tar.gz", hash = "sha256:1a29730d366e996aaacffb2f1f1cb9593dc38e2ddd30c91250c6dde09ea9b417"},
+]
 
 [[package]]
 name = "mccabe"
@@ -333,4 +379,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "678d99141252b27d74f47c09a4ba5d6bcc97f8515c5fb54be715b4a853dfda6b"
+content-hash = "388cbdc4eb7a7426792bbb81e729176c8aeed5fee86d84906d278d06a1d44b58"

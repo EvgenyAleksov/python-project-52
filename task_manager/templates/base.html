@@ -24,10 +24,10 @@
           <a class="nav-link" href="{% url 'status_list' %}">Статусы</a>
         </div>
         <div class="p-2">
-          <a class="nav-link">Метки</a>
+          <a class="nav-link" href="{% url 'label_list' %}">Метки</a>
         </div>
         <div class="p-2">
-          <a class="nav-link">Задачи</a>
+          <a class="nav-link" href="{% url 'task_list' %}">Задачи</a>
         </div>
         <div class="p-2">
           <form action="{% url 'logout' %}" method="post">
