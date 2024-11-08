@@ -10,12 +10,10 @@ from task_manager.tasks.filters import TaskFilter
 from task_manager.users.models import User
 
 from task_manager.mixins import (ProjectLoginRequiredMixin,
-                                 HasPermissionTaskDeleteMixin,
-                                 ProjectFormMixin)
+                                 HasPermissionTaskDeleteMixin)
 
 
-class TaskListView(ProjectLoginRequiredMixin,
-                   FilterView,
+class TaskListView(FilterView,
                    ListView):
     model = Task
     filterset_class = TaskFilter
@@ -59,9 +57,8 @@ class TaskUpdateView(ProjectLoginRequiredMixin,
 
 class TaskDeleteView(ProjectLoginRequiredMixin,
                      SuccessMessageMixin,
-                     DeleteView,
                      HasPermissionTaskDeleteMixin,
-                     ProjectFormMixin):
+                     DeleteView):
     model = Task
     template_name = 'delete.html'
     extra_context = {

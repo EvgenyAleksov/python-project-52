@@ -6,11 +6,10 @@ from django.urls import reverse_lazy
 from task_manager.labels.models import Label
 from task_manager.labels.forms import LabelForm
 from task_manager.mixins import (ProjectLoginRequiredMixin,
-                                 ProjectFormMixin)
+                                 EntityProtectedMixin)
 
 
-class LabelListView(ProjectLoginRequiredMixin,
-                    ListView):
+class LabelListView(ListView):
     model = Label
     template_name = 'labels/labels.html'
     context_object_name = 'labels'
@@ -46,7 +45,7 @@ class LabelUpdateView(ProjectLoginRequiredMixin,
 
 class LabelDeleteView(ProjectLoginRequiredMixin,
                       SuccessMessageMixin,
-                      ProjectFormMixin,
+                      EntityProtectedMixin,
                       DeleteView):
     model = Label
     template_name = 'delete.html'
@@ -56,6 +55,6 @@ class LabelDeleteView(ProjectLoginRequiredMixin,
     }
     success_url = reverse_lazy('label_list')
     success_message = 'Метка успешно удалена'
-    denied_url = reverse_lazy('task_list')
-    permission_denied_message = 'Невозможно удалить метку, \
+    denied_url = reverse_lazy('label_list')
+    protected_message = 'Невозможно удалить метку, \
     потому что она используется'

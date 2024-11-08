@@ -3,7 +3,8 @@ from django.contrib.auth.views import RedirectURLMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
-from django.views.generic.edit import FormMixin
+from django.views.generic.edit import DeletionMixin
+from django.db.models import ProtectedError
 
 
 class ProjectRedirectURLMixin(RedirectURLMixin):
@@ -30,6 +31,9 @@ class ProjectLoginRequiredMixin(LoginRequiredMixin):
 
 
 class ProjectUserPassesTestMixin(UserPassesTestMixin):
+    """
+    Запрет на изменение/удаление чужих Данных
+    """
     denied_url = None
     permission_denied_message = None
 
@@ -42,18 +46,39 @@ class ProjectUserPassesTestMixin(UserPassesTestMixin):
 
 
 class HasPermissionUserChangeMixin(ProjectUserPassesTestMixin):
+    """
+    Запрет на изменение/удаление другого Пользователя
+    """
     def test_func(self):
         return self.get_object() == self.request.user
 
 
 class HasPermissionTaskDeleteMixin(ProjectUserPassesTestMixin):
+    """
+    Запрет на изменение/удаление чужой Задачи
+    """
     def test_func(self):
         return self.get_object().author == self.request.user
 
 
-class ProjectFormMixin(FormMixin):
-    def get_context_data(self, **kwargs):
-        object = self.get_object()
-        context = super().get_context_data(**kwargs)
-        context['name'] = object.name
-        return context
+class EntityProtectedMixin(DeletionMixin):
+    """
+    Запрет на удаление используемых Объектов
+    """
+    denied_url = None
+    protected_message = None
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            messages.error(request, self.protected_message)
+            return redirect(self.denied_url)
+
+
+# class ProjectFormMixin(FormMixin):
+#     def get_context_data(self, **kwargs):
+#         object = self.get_object()
+#         context = super().get_context_data(**kwargs)
+#         context['name'] = object.name
+#         return context

@@ -5,7 +5,8 @@ from django.urls import reverse_lazy
 from task_manager.users.models import User
 from task_manager.users.forms import UserForm, UserUpdateForm
 from task_manager.mixins import (ProjectLoginRequiredMixin,
-                                 HasPermissionUserChangeMixin)
+                                 HasPermissionUserChangeMixin,
+                                 EntityProtectedMixin)
 
 
 class UsersListView(ListView):
@@ -51,6 +52,7 @@ class UserUpdateView(ProjectLoginRequiredMixin,
 class UserDeleteView(ProjectLoginRequiredMixin,
                      HasPermissionUserChangeMixin,
                      SuccessMessageMixin,
+                     EntityProtectedMixin,
                      DeleteView):
     model = User
     template_name = 'delete.html'
@@ -63,6 +65,8 @@ class UserDeleteView(ProjectLoginRequiredMixin,
     denied_url = reverse_lazy('users')
     permission_denied_message = 'У вас нет прав для изменения\
                                  другого пользователя.'
+    protected_message = 'Невозможно удалить пользователя,\
+                         потому что он используется'
 
     def get_context_data(self, **kwargs):
         user = self.get_object()

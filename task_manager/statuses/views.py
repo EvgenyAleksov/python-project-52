@@ -4,7 +4,8 @@ from django.urls import reverse_lazy
 
 from task_manager.statuses.models import Status
 from task_manager.statuses.forms import StatusForm
-from task_manager.mixins import (ProjectLoginRequiredMixin)
+from task_manager.mixins import (ProjectLoginRequiredMixin,
+                                 EntityProtectedMixin)
 
 
 class StatusListView(ListView):
@@ -43,6 +44,7 @@ class StatusUpdateView(ProjectLoginRequiredMixin,
 
 class StatusDeleteView(ProjectLoginRequiredMixin,
                        SuccessMessageMixin,
+                       EntityProtectedMixin,
                        DeleteView):
     model = Status
     template_name = 'delete.html'
