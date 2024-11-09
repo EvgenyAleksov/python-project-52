@@ -17,7 +17,6 @@ psycopg2-binary = "^2.9.10"
 django-bootstrap5 = "^24.3"
 i18n = "^0.2"
 django-filter = "^24.3"
-djangorestframework-jsonapi = "^7.1.0"
 
 
 [tool.poetry.group.dev.dependencies]
