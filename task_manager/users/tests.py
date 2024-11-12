@@ -6,8 +6,7 @@ from task_manager.users.models import User
 
 class TestUsers(TestCase):
 
-    @classmethod
-    def setUpTestData(cls):
+    def setUp(self):
         User.objects.create(
             first_name='T1',
             last_name='M1',
