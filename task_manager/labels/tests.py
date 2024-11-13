@@ -35,7 +35,7 @@ class TestLabels(TestCase):
 
     def test_label_update(self):
         self.client.force_login(self.user)
-        label = Label.objects.get(pk=1)
+        label = Label.objects.get(id=1)
 
         response = self.client.post(reverse('label_update',
                                     kwargs={'pk': 1}),

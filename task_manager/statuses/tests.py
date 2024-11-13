@@ -33,7 +33,7 @@ class TestStatuses(TestCase):
         response = self.client.get(reverse('status_list'))
         self.assertTrue(len(response.context['statuses']), 4)
 
-    def test_user_update(self):
+    def test_status_update(self):
         self.client.force_login(self.user)
         status = Status.objects.get(pk=1)
 
@@ -44,7 +44,7 @@ class TestStatuses(TestCase):
         status.refresh_from_db()
         self.assertEqual(status.name, 'status111')
 
-    def test_user_delete(self):
+    def test_status_delete(self):
         self.client.force_login(self.user)
 
         response = self.client.post(reverse('status_delete',
