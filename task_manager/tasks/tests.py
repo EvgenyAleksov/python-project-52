@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from task_manager.users.models import User
+from task_manager.statuses.models import Status
 from task_manager.tasks.models import Task
 
 
@@ -14,6 +15,7 @@ class TestTasks(TestCase):
             username='TM1',
         )
         self.user = User.objects.get(id=1)
+        Status.objects.create(name='status1')
 
         Task.objects.create(
             name='task1',
@@ -51,6 +53,7 @@ class TestTasks(TestCase):
         self.assertTrue(len(response.context['tasks']), 3)
 
     def test_task_update(self):
+        self.user = User.objects.get(id=1)
         self.client.force_login(self.user)
         task = Task.objects.get(id=1)
 
@@ -65,7 +68,7 @@ class TestTasks(TestCase):
         self.client.force_login(self.user)
 
         response = self.client.post(reverse('task_delete',
-                                    kwargs={'pk': 1}))
+                                    kwargs={'pk': 2}))
         self.assertRedirects(response, reverse('task_list'))
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Task.objects.count(), 1)
