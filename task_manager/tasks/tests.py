@@ -53,7 +53,6 @@ class TestTasks(TestCase):
         self.assertTrue(len(response.context['tasks']), 3)
 
     def test_task_update(self):
-        self.user = User.objects.get(id=1)
         self.client.force_login(self.user)
         task = Task.objects.get(id=1)
 
