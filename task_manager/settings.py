@@ -146,7 +146,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 ROLLBAR = {
-    'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
+    'access_token': '181b553a63294378a347b22897355e97',
     'environment': 'development' if DEBUG else 'production',
     'root': BASE_DIR,
 }
