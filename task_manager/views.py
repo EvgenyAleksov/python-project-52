@@ -7,7 +7,7 @@ from .mixins import ProjectRedirectURLMixin
 from django.http import HttpResponse
 
 
-def index(request):
+def index1(request):
     a = None
     a.hello()  # Creating an error with an invalid line of code
     return HttpResponse("Hello, world. You're at the pollapp index.")
