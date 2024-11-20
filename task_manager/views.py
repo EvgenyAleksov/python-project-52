@@ -16,9 +16,9 @@ class LoginUser(ProjectRedirectURLMixin, LoginView):
         'button_text': 'Войти'
     }
     next_page = reverse_lazy('index')
-    success_message = 'Вы вошли в систему'
+    success_message = 'Вы залогинены'
 
 
 class LogoutUser(ProjectRedirectURLMixin, LogoutView):
     next_page = reverse_lazy('index')
-    info_message = 'Вы вышли из системы'
+    info_message = 'Вы разлогинены'
