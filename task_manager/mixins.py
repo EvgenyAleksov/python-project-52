@@ -74,11 +74,3 @@ class EntityProtectedMixin(DeletionMixin):
         except ProtectedError:
             messages.error(request, self.protected_message)
             return redirect(self.denied_url)
-
-
-# class ProjectFormMixin(FormMixin):
-#     def get_context_data(self, **kwargs):
-#         object = self.get_object()
-#         context = super().get_context_data(**kwargs)
-#         context['name'] = object.name
-#         return context
