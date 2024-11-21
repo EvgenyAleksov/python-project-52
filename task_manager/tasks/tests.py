@@ -57,13 +57,12 @@ class TestTasks(TestCase):
         response = self.client.get(reverse('task_create'))
         self.assertEqual(response.status_code, 200)
 
-        # task = Task.objects.get(pk=1)
-        # response = self.client.post(reverse('task',
-        #                             kwargs={'pk': 1}),
-        #                             {'name': 'task111'})
-        # self.assertEqual(response.status_code, 302)
-        # task.refresh_from_db()
-        # self.assertEqual(task.name, 'task111')
+        task = Task.objects.get(pk=1)
+        response = self.client.post(reverse('task_update',
+                                    kwargs={'pk': task.id}))
+        self.assertEqual(response.status_code, 200)
+        task.refresh_from_db()
+        self.assertEqual(task.name, 'task1')
 
     def test_task_delete(self):
         self.client.force_login(self.user)
