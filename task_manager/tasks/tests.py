@@ -19,12 +19,14 @@ class TestTasks(TestCase):
 
         Task.objects.create(
             name='task1',
+            description='d1',
             status_id='1',
             author_id='1',
             executor_id='1',
         )
         Task.objects.create(
             name='task2',
+            description='d2',
             status_id='1',
             author_id='1',
             executor_id='1',
@@ -43,7 +45,7 @@ class TestTasks(TestCase):
 
         response = self.client.post(reverse('task_create'), {
                 'name': 'task3',
-                'description': 'AB',
+                'description': 'd3',
                 'author_id': '1',
                 'executor_id': '1',
                 'status_id': '1',
