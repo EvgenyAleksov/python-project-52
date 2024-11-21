@@ -31,8 +31,8 @@ class TaskCreateView(ProjectLoginRequiredMixin,
     success_url = reverse_lazy('task_list')
     success_message = ('Задача успешно создана')
     extra_context = {
-        'title': 'Задачи',
-        'button_text': 'Создать задачу',
+        'title': 'Создать задачу',
+        'button_text': 'Создать',
     }
 
     def form_valid(self, form):
