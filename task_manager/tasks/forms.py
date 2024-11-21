@@ -14,11 +14,13 @@ class TaskForm(ModelForm):
 
     status = forms.ModelChoiceField(
         queryset=Status.objects.all(),
+        empty_label='---------',
         label='Статус',
         widget=forms.Select(attrs={'class': 'form-control'}))
 
     executor = forms.ModelChoiceField(
         queryset=User.objects.all(),
+        empty_label='---------',
         label='Исполнитель',
         widget=forms.Select(attrs={'class': 'form-control'}))
 
@@ -30,24 +32,13 @@ class TaskForm(ModelForm):
 
     class Meta:
         model = Task
-        fields = ('name', 'description', 'status', 'executor', 'labels')
-        # widgets = {
-        #     'name': forms.TextInput(
-        #         attrs={
-        #             'placeholder': 'Имя',
-        #             'class': 'form-control'
-        #         }
-        #     ),
-        #     'description': forms.Textarea(
-        #         attrs={
-        #             'placeholder': 'Описание',
-        #             'cols': 40,
-        #             'rows': 10,
-        #             'class': 'form-control'
-        #         }
-        #     )
-        # }
-        # labels = {
-        #     'name': 'Имя',
-        #     'description': 'Описание'
-        # }
+        fields = ['name', 'description', 'status', 'executor', 'labels']
+        widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'Имя',
+                                           'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'placeholder': 'Описание',
+                                                 'cols': 40,
+                                                 'rows': 10,
+                                                 'class': 'form-control'})}
+        labels = {'name': 'Имя',
+                  'description': 'Описание'}

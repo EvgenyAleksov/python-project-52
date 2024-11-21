@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
 
+from .users.models import User
 from .mixins import ProjectRedirectURLMixin
 
 
@@ -15,9 +16,15 @@ class IndexView(TemplateView):
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label="Имя пользователя")
+
     password = forms.CharField(
         label="Пароль",
-        widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+        widget=forms.PasswordInput(attrs={'placeholder': 'Пароль',
+                                          'class': 'form-control'}))
+
+    class Meta:
+        model = User
+        fields = ['username', 'password']
 
 
 class LoginUser(SuccessMessageMixin, LoginView):
