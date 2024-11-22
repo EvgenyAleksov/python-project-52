@@ -55,7 +55,7 @@ class TestTasks(TestCase):
         self.assertTrue(len(response.context['tasks']), 3)
 
     def test_task_update(self):
-        # self.client.force_login(self.user)
+        self.client.force_login(self.user)
         task = Task.objects.get(id=1)
 
         response = self.client.post(
@@ -68,7 +68,7 @@ class TestTasks(TestCase):
 
         self.assertEqual(response.status_code, 302)
         task.refresh_from_db()
-        self.assertEqual([task.name, task.description], ['task1', 'd1'])
+        self.assertEqual([task.name, task.description], ['task111', 'd111'])
 
     def test_task_delete(self):
         self.client.force_login(self.user)
