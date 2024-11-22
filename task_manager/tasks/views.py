@@ -28,12 +28,12 @@ class TaskCreateView(ProjectLoginRequiredMixin,
     model = Task
     form_class = TaskForm
     template_name = 'create.html'
-    success_url = reverse_lazy('task_list')
-    success_message = ('Задача успешно создана')
     extra_context = {
         'title': 'Создать задачу',
         'button_text': 'Создать',
     }
+    success_url = reverse_lazy('task_list')
+    success_message = ('Задача успешно создана')
 
     def form_valid(self, form):
         user = self.request.user
@@ -47,12 +47,12 @@ class TaskUpdateView(ProjectLoginRequiredMixin,
     model = Task
     form_class = TaskForm
     template_name = 'create.html'
-    success_url = reverse_lazy('task_list')
-    success_message = 'Задача успешно изменена'
     extra_context = {
         'title': 'Изменение задачи',
         'button_text': 'Изменить',
     }
+    success_url = reverse_lazy('task_list')
+    success_message = 'Задача успешно изменена'
 
 
 class TaskDeleteView(ProjectLoginRequiredMixin,

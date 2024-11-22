@@ -1,8 +1,8 @@
 from django import forms
 from django.forms import ModelForm, CharField
 
-from task_manager.users.models import User
 from task_manager.tasks.models import Task
+from task_manager.users.models import User
 from task_manager.statuses.models import Status
 from task_manager.labels.models import Label
 
@@ -32,7 +32,7 @@ class TaskForm(ModelForm):
 
     class Meta:
         model = Task
-        fields = ['name', 'description', 'status', 'executor', 'labels']
+        fields = ('name', 'description', 'status', 'executor', 'labels')
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Имя',
                                            'class': 'form-control'}),
@@ -40,5 +40,3 @@ class TaskForm(ModelForm):
                                                  'cols': 40,
                                                  'rows': 10,
                                                  'class': 'form-control'})}
-        labels = {'name': 'Имя',
-                  'description': 'Описание'}

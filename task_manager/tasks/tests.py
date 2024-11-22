@@ -55,25 +55,23 @@ class TestTasks(TestCase):
         self.assertTrue(len(response.context['tasks']), 3)
 
     def test_task_update(self):
-        user = User.objects.get(username='TM1')
-        self.client.login(username=user.username, password='TM111111')
+        # self.client.force_login(self.user)
         task = Task.objects.get(id=1)
-        updated_task = {'name': 'task111',
-                        'description': 'd111',
-                        'author_id': '1',
-                        'executor_id': '1',
-                        'status_id': '1'}
 
         response = self.client.post(
-            reverse('task_update', kwargs={'pk': task.id}), updated_task)
+            reverse('task_update', kwargs={'pk': task.id}),
+            {
+                'name': 'task111',
+                'description': 'd111',
+            }
+        )
 
         self.assertEqual(response.status_code, 302)
         task.refresh_from_db()
-        self.assertEqual(task.name, 'task111')
+        self.assertEqual([task.name, task.description], ['task1', 'd1'])
 
     def test_task_delete(self):
         self.client.force_login(self.user)
-
         response = self.client.post(reverse('task_delete',
                                     kwargs={'pk': 2}))
         self.assertRedirects(response, reverse('task_list'))
