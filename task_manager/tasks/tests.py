@@ -20,16 +20,16 @@ class TestTasks(TestCase):
         Task.objects.create(
             name='task1',
             description='d1',
-            status_id='1',
-            author_id='1',
-            executor_id='1',
+            status_id=1,
+            author_id=1,
+            executor_id=1,
         )
         Task.objects.create(
             name='task2',
             description='d2',
-            status_id='1',
-            author_id='1',
-            executor_id='1',
+            status_id=1,
+            author_id=1,
+            executor_id=1,
         )
 
     def test_task_list(self):
@@ -46,10 +46,11 @@ class TestTasks(TestCase):
         response = self.client.post(reverse('task_create'), {
                 'name': 'task3',
                 'description': 'd3',
-                'status': 'status1',
-                'author': 'TM1',
-                'executor': 'TM1',
-                })
+                'status_id': 1,
+                'author': 1,
+                'executor': 1,
+            }
+        )
 
         self.assertEqual(response.status_code, 200)
         response = self.client.get(reverse('task_list'))
@@ -64,9 +65,9 @@ class TestTasks(TestCase):
             {
                 'name': 'task111',
                 'description': 'd111',
-                'status': '1',
-                'author': '1',
-                'executor': '1',
+                'status': 1,
+                'author': 1,
+                'executor': 1,
             }
         )
         self.assertEqual(response.status_code, 302)
