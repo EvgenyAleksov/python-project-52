@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from task_manager.users.models import User
 from task_manager.statuses.models import Status
@@ -13,7 +14,9 @@ class Task(models.Model):
     )
 
     description = models.TextField(
+        max_length=15000,
         blank=True,
+        verbose_name=_('Description')
     )
 
     status = models.ForeignKey(
