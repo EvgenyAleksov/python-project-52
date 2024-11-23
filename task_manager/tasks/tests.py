@@ -46,9 +46,9 @@ class TestTasks(TestCase):
         response = self.client.post(reverse('task_create'), {
                 'name': 'task3',
                 'description': 'd3',
-                'status_id': '1',
-                'author_id': '1',
-                'executor_id': '1',
+                'status': 'status1',
+                'author': 'TM1',
+                'executor': 'TM1',
                 })
 
         self.assertEqual(response.status_code, 200)
