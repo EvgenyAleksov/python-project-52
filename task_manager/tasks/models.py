@@ -13,8 +13,8 @@ class Task(models.Model):
         blank=False,
     )
 
-    description = models.TextField(
-        max_length=15000,
+    description = models.CharField(
+        max_length=1000,
         blank=True,
         verbose_name=_('Description')
     )
