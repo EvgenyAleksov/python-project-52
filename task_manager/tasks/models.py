@@ -8,13 +8,13 @@ from task_manager.labels.models import Label
 
 class Task(models.Model):
     name = models.CharField(
-        max_length=150,
+        max_length=100,
         unique=True,
         blank=False,
     )
 
-    description = models.CharField(
-        max_length=1000,
+    description = models.TextField(
+        max_length=100,
         blank=True,
         verbose_name=_('Description')
     )
@@ -50,6 +50,10 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = _('Task')
+        verbose_name_plural = _('Tasks')
 
 
 class TaskLabelRelationships(models.Model):
