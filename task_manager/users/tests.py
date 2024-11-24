@@ -28,11 +28,11 @@ class TestUsers(TestCase):
         self.assertTemplateUsed(response, template_name='create.html')
 
         response = self.client.post(reverse('user_create'), {
-                'first_name': 'T3',
-                'last_name': 'M3',
-                'username': 'TM3',
-                'password1': 'TM333333',
-                'password2': 'TM333333'})
+            'first_name': 'T3',
+            'last_name': 'M3',
+            'username': 'TM3',
+            'password1': 'TM333333',
+            'password2': 'TM333333'})
 
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('login'))
@@ -60,11 +60,11 @@ class TestUsers(TestCase):
         self.assertTemplateUsed(response, template_name='create.html')
         response = self.client.post(reverse('user_update',
                                     kwargs={'pk': user.id}), {
-                'first_name': 'T222',
-                'last_name': 'M222',
-                'username': 'TM222',
-                'password1': 'TM222222',
-                'password2': 'TM222222'})
+            'first_name': 'T222',
+            'last_name': 'M222',
+            'username': 'TM222',
+            'password1': 'TM222222',
+            'password2': 'TM222222'})
         self.assertEqual(response.status_code, 302)
         user.refresh_from_db()
         self.assertEqual(user.first_name, 'T222')

@@ -44,13 +44,11 @@ class TestTasks(TestCase):
         self.assertTemplateUsed(response, template_name='create.html')
 
         response = self.client.post(reverse('task_create'), {
-                'name': 'task3',
-                'description': 'd3',
-                'status_id': 1,
-                'author': 1,
-                'executor': 1,
-            }
-        )
+            'name': 'task3',
+            'description': 'd3',
+            'status_id': 1,
+            'author': 1,
+            'executor': 1})
 
         self.assertEqual(response.status_code, 200)
         response = self.client.get(reverse('task_list'))

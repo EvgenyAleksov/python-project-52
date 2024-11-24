@@ -27,4 +27,4 @@ class TaskFilter(FilterSet):
 
     class Meta:
         model = Task
-        fields = ['status', 'executor',  'labels']
+        fields = ['status', 'executor', 'labels']
