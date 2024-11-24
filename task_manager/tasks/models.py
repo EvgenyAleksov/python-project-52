@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 
 from task_manager.users.models import User
 from task_manager.statuses.models import Status
@@ -16,7 +15,6 @@ class Task(models.Model):
     description = models.TextField(
         max_length=10000,
         blank=True,
-        verbose_name=_('Description')
     )
 
     status = models.ForeignKey(
@@ -50,10 +48,6 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
-
-    class Meta:
-        verbose_name = _('Task')
-        verbose_name_plural = _('Tasks')
 
 
 class TaskLabelRelationships(models.Model):
