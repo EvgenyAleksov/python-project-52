@@ -14,7 +14,7 @@ class Task(models.Model):
     )
 
     description = models.TextField(
-        max_length=100,
+        max_length=10000,
         blank=True,
         verbose_name=_('Description')
     )
