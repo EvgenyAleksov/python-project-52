@@ -51,6 +51,8 @@ class TestTasks(TestCase):
             'executor': 1})
 
         self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('task_list'))
+
         response = self.client.get(reverse('task_list'))
         self.assertTrue(len(response.context['tasks']), 3)
 
