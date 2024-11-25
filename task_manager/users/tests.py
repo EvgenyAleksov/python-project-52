@@ -38,9 +38,10 @@ class TestUsers(TestCase):
         self.assertRedirects(response, reverse('login'))
 
         user = User.objects.last()
-        self.assertEqual(user.first_name, 'T3')
-        self.assertEqual(user.last_name, 'M3')
-        self.assertEqual(user.username, 'TM3')
+        self.assertEqual([user.first_name,
+                          user.last_name,
+                          user.username],
+                         ['T3', 'M3', 'TM3'])
 
         response = self.client.get(reverse('users'))
         self.assertTrue(len(response.context['users']), 3)

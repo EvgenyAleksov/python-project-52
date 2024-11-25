@@ -46,11 +46,11 @@ class TestTasks(TestCase):
         response = self.client.post(reverse('task_create'), {
             'name': 'task3',
             'description': 'd3',
-            'status_id': 1,
+            'status': 1,
             'author': 1,
             'executor': 1})
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
         response = self.client.get(reverse('task_list'))
         self.assertTrue(len(response.context['tasks']), 3)
 
@@ -69,6 +69,7 @@ class TestTasks(TestCase):
             }
         )
         self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('task_list'))
         task.refresh_from_db()
         self.assertEqual([task.name, task.description], ['task111', 'd111'])
 
