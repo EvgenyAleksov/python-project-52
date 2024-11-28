@@ -2,6 +2,7 @@ from django.views.generic import (ListView, CreateView,
                                   UpdateView, DeleteView)
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 from task_manager.labels.models import Label
 from task_manager.labels.forms import LabelForm
@@ -22,10 +23,10 @@ class LabelCreateView(ProjectLoginRequiredMixin,
     form_class = LabelForm
     template_name = 'create.html'
     success_url = reverse_lazy('label_list')
-    success_message = ('Метка успешно создана')
+    success_message = _('Label is successfully created')
     extra_context = {
-        'title': 'Создать метку',
-        'button_text': 'Создать',
+        'title': _('Create label'),
+        'button_text': _('Create'),
     }
 
 
@@ -36,10 +37,10 @@ class LabelUpdateView(ProjectLoginRequiredMixin,
     form_class = LabelForm
     template_name = 'create.html'
     success_url = reverse_lazy('label_list')
-    success_message = 'Метка успешно изменена'
+    success_message = _('Label is successfully updated')
     extra_context = {
-        'title': 'Изменение метки',
-        'button_text': 'Изменить',
+        'title': _('Update label'),
+        'button_text': _('Update'),
     }
 
 
@@ -50,11 +51,10 @@ class LabelDeleteView(ProjectLoginRequiredMixin,
     model = Label
     template_name = 'delete.html'
     extra_context = {
-        'title': 'Удаление метки',
-        'button_text': 'Да, удалить',
+        'title': _('Delete label'),
+        'button_text': _('Yes, delete'),
     }
     success_url = reverse_lazy('label_list')
-    success_message = 'Метка успешно удалена'
+    success_message = _('Label is successfully deleted')
     denied_url = reverse_lazy('label_list')
-    protected_message = 'Невозможно удалить метку, \
-    потому что она используется'
+    protected_message = _('Unable to delete a label because it is being used')

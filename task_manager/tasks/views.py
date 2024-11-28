@@ -3,6 +3,7 @@ from django.views.generic import (ListView, CreateView, UpdateView,
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django_filters.views import FilterView
+from django.utils.translation import gettext_lazy as _
 
 from task_manager.tasks.models import Task
 from task_manager.tasks.forms import TaskForm
@@ -19,7 +20,7 @@ class TaskListView(FilterView,
     filterset_class = TaskFilter
     template_name = 'tasks/tasks.html'
     context_object_name = 'tasks'
-    extra_context = {'button_text': 'Показать'}
+    extra_context = {'button_text': _('Show')}
 
 
 class TaskCreateView(ProjectLoginRequiredMixin,
@@ -29,11 +30,11 @@ class TaskCreateView(ProjectLoginRequiredMixin,
     form_class = TaskForm
     template_name = 'create.html'
     extra_context = {
-        'title': 'Создать задачу',
-        'button_text': 'Создать',
+        'title': _('Create task'),
+        'button_text': _('Create'),
     }
     success_url = reverse_lazy('task_list')
-    success_message = ('Задача успешно создана')
+    success_message = _('Task is successfully created')
 
     def form_valid(self, form):
         user = self.request.user
@@ -48,11 +49,11 @@ class TaskUpdateView(ProjectLoginRequiredMixin,
     form_class = TaskForm
     template_name = 'create.html'
     extra_context = {
-        'title': 'Изменение задачи',
-        'button_text': 'Изменить',
+        'title': _('Update task'),
+        'button_text': _('Update'),
     }
     success_url = reverse_lazy('task_list')
-    success_message = 'Задача успешно изменена'
+    success_message = _('Task is successfully updated')
 
 
 class TaskDeleteView(ProjectLoginRequiredMixin,
@@ -62,13 +63,13 @@ class TaskDeleteView(ProjectLoginRequiredMixin,
     model = Task
     template_name = 'delete.html'
     extra_context = {
-        'title': 'Удаление задачи',
-        'button_text': 'Да, удалить',
+        'title': _('Delete task'),
+        'button_text': _('Yes, delete'),
     }
     success_url = reverse_lazy('task_list')
-    success_message = 'Задача успешно удалена'
+    success_message = _('Task is successfully deleted')
     denied_url = reverse_lazy('task_list')
-    permission_denied_message = 'Задачу может удалить только ее автор'
+    permission_denied_message = _('The task can be deleted only by its author')
 
 
 class TaskView(ProjectLoginRequiredMixin,

@@ -1,6 +1,7 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 from task_manager.users.models import User
 from task_manager.users.forms import UserForm, UserUpdateForm
@@ -24,10 +25,10 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     form_class = UserForm
     template_name = 'create.html'
     success_url = reverse_lazy('login')
-    success_message = ('Пользователь успешно зарегистрирован')
+    success_message = _('User is successfully registered')
     extra_context = {
-        'title': 'Регистрация',
-        'button_text': 'Зарегистрировать',
+        'title': _('Sign Up'),
+        'button_text': _('Register'),
     }
 
 
@@ -39,14 +40,13 @@ class UserUpdateView(ProjectLoginRequiredMixin,
     form_class = UserUpdateForm
     template_name = 'create.html'
     extra_context = {
-        'title': 'Изменение пользователя',
-        'button_text': 'Изменить',
+        'title': _('Update user'),
+        'button_text': _('Update'),
     }
     success_url = reverse_lazy('users')
-    success_message = 'Пользователь успешно изменен'
+    success_message = _('User is successfully updated')
     denied_url = reverse_lazy('users')
-    permission_denied_message = 'У вас нет прав для изменения\
-                                 другого пользователя.'
+    permission_denied_message = _('You have no rights to change another user.')
 
 
 class UserDeleteView(ProjectLoginRequiredMixin,
@@ -57,16 +57,14 @@ class UserDeleteView(ProjectLoginRequiredMixin,
     model = User
     template_name = 'delete.html'
     extra_context = {
-        'title': 'Удаление пользователя',
-        'button_text': 'Да, удалить',
+        'title': _('Delete user'),
+        'button_text': _('Yes, delete'),
     }
     success_url = reverse_lazy('users')
-    success_message = 'Пользователь успешно удален'
+    success_message = _('User is successfully deleted')
     denied_url = reverse_lazy('users')
-    permission_denied_message = 'У вас нет прав для изменения\
-                                 другого пользователя.'
-    protected_message = 'Невозможно удалить пользователя,\
-                         потому что он используется'
+    permission_denied_message = _('You have no rights to change another user.')
+    protected_message = _('Unable to delete a user because he is being used')
 
     def get_context_data(self, **kwargs):
         user = self.get_object()

@@ -24,3 +24,51 @@
  - Просматривать, добавлять, обновлять и удалять **_задачи_** после входа в систему.
     Удалять задачи может только их создатель.
     Также достуана выборка задач на соответствующей странице с указанием статусов, исполнителей и меток.
+
+
+## Требования к установке
+```
+* Python 3.10.
+* Poetry 1.8.3
+```
+
+
+## Установка
+
+1. Склонировать репозиторий:
+```
+https://github.com/EvgenyAleksov/python-project-52.git
+```
+
+2. Прейти в директорию проекта:
+```
+cd python-project-52
+```
+
+3. Установить проект:
+```
+make install
+```
+
+4. Для локального запуска используется База данных SQLite.
+
+
+
+## Проверка кода проекта линтером _flake8_
+```
+poetry run flake8 page_analyzer
+```
+
+
+## Запуск
+Локально:
+```
+make dev
+```
+
+На render.com:
+```
+* Создать БД (PostgreSQL) на render.com: https://docs.render.com/databases
+* Build Command: make install db-clean install migrate
+* Start Command: make start
+```

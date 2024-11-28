@@ -1,6 +1,7 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 from task_manager.statuses.models import Status
 from task_manager.statuses.forms import StatusForm
@@ -21,10 +22,10 @@ class StatusCreateView(ProjectLoginRequiredMixin,
     form_class = StatusForm
     template_name = 'create.html'
     success_url = reverse_lazy('status_list')
-    success_message = ('Статус успешно создан')
+    success_message = _('Status is successfully created')
     extra_context = {
-        'title': 'Создать статус',
-        'button_text': 'Создать',
+        'title': _('Create status'),
+        'button_text': _('Create'),
     }
 
 
@@ -35,10 +36,10 @@ class StatusUpdateView(ProjectLoginRequiredMixin,
     form_class = StatusForm
     template_name = 'create.html'
     success_url = reverse_lazy('status_list')
-    success_message = 'Статус успешно изменен'
+    success_message = _('Status is successfully updated')
     extra_context = {
-        'title': 'Изменение статуса',
-        'button_text': 'Изменить',
+        'title': _('Update status'),
+        'button_text': _('Update'),
     }
 
 
@@ -49,12 +50,10 @@ class StatusDeleteView(ProjectLoginRequiredMixin,
     model = Status
     template_name = 'delete.html'
     extra_context = {
-        'title': 'Удаление статуса',
-        'button_text': 'Да, удалить',
+        'title': _('Delete status'),
+        'button_text': _('Yes, delete'),
     }
     success_url = reverse_lazy('status_list')
-    success_message = 'Статус успешно удален'
+    success_message = _('Status is successfully deleted')
     denied_url = reverse_lazy('status_list')
-    permission_denied_message = 'У вас нет прав для изменения\
-                                 другого пользователя.'
-    protected_message = 'Невозможно удалить статус, потому что он используется'
+    protected_message = _('Unable to delete a status because it is being used')

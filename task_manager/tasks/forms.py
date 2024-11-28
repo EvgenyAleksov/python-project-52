@@ -1,4 +1,5 @@
 from django.forms import ModelForm
+from django.utils.translation import gettext_lazy as _
 
 from task_manager.tasks.models import Task
 
@@ -8,8 +9,8 @@ class TaskForm(ModelForm):
         model = Task
         fields = ('name', 'description', 'status', 'executor', 'labels')
         labels = {
-            'name': 'Имя',
+            'name': _('Name'),
             'description': 'Описание',
-            'status': 'Статус',
-            'executor': 'Исполнитель',
-            'labels': 'Метки'}
+            'status': _('Status'),
+            'executor': _('Executor'),
+            'labels': _('Labels')}

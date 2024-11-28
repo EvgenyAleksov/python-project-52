@@ -1,3 +1,6 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,42 +8,41 @@
   {% load django_bootstrap5 %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Менеджер задач Hexlet</title>
+  <title>Hexlet Task Manager</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
   <header>
     <nav class="navbar navbar-light-lg px-4 d-flex bd-highlight bg-light text-dark ms-3">
       <div class="p-2 flex-grow-1">
-        <a class="navbar-brand" href="{% url 'index' %}">Менеджер задач</a>
+        <a class="navbar-brand" href="{% url 'index' %}">{% trans "Task manager" %}</a>
       </div>
       <div class="p-2">
-        <a class="nav-link" href="{% url 'users' %}">Пользователи</a>
+        <a class="nav-link" href="{% url 'users' %}">{% trans "Users" %}</a>
       </div>
       {% if request.user.is_authenticated %}
         <div class="p-2">
-          <a class="nav-link" href="{% url 'status_list' %}">Статусы</a>
+          <a class="nav-link" href="{% url 'status_list' %}">{% trans "Statuses" %}</a>
         </div>
         <div class="p-2">
-          <a class="nav-link" href="{% url 'label_list' %}">Метки</a>
+          <a class="nav-link" href="{% url 'label_list' %}">{% trans "Labels" %}</a>
         </div>
         <div class="p-2">
-          <a class="nav-link" href="{% url 'task_list' %}">Задачи</a>
+          <a class="nav-link" href="{% url 'task_list' %}">{% trans "Tasks" %}</a>
         </div>
         <div class="p-2">
           <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <input class="btn nav-link" type="submit" value='Выход'>
+            <input class="btn nav-link" type="submit" value='{% trans 'Log Out' %}'>
           </form>
         </div>
       {% else %}
         <div class="p-2">
-          <a class="nav-link" href="{% url 'login' %}">Вход</a>
+          <a class="nav-link" href="{% url 'login' %}">{% trans "Log In" %}</a>
         </div>
         <div class="p-2">
-          <a class="nav-link" href="{% url 'user_create' %}">Регистрация</a>
+          <a class="nav-link" href="{% url 'user_create' %}">{% trans "Sign Up" %}</a>
         </div>
       {% endif %}
     </nav>
