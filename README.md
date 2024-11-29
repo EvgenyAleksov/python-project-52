@@ -68,7 +68,7 @@ make dev
 
 На render.com:
 ```
-* Создать БД (PostgreSQL) на render.com: https://docs.render.com/databases
+* Создать БД (PostgreSQL): https://docs.render.com/databases
 * Build Command: make install db-clean install migrate
 * Start Command: make start
 ```
