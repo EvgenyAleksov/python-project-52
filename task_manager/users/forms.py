@@ -6,6 +6,7 @@ from task_manager.users.models import User
 
 
 class UserForm(UserCreationForm):
+
     first_name = CharField(
         max_length=150,
         required=True,

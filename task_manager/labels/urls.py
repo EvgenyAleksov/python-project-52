@@ -5,6 +5,7 @@ from task_manager.labels.views import (LabelListView, LabelCreateView,
 
 
 urlpatterns = [
+
     path('', LabelListView.as_view(), name='label_list'),
     path('create/', LabelCreateView.as_view(), name='label_create'),
     path('<int:pk>/update/', LabelUpdateView.as_view(), name='label_update'),

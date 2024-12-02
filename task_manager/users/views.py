@@ -11,6 +11,7 @@ from task_manager.mixins import (ProjectLoginRequiredMixin,
 
 
 class UsersListView(ListView):
+
     model = User
     template_name = 'users/users.html'
     context_object_name = 'users'

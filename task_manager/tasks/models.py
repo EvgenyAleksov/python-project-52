@@ -6,6 +6,7 @@ from task_manager.labels.models import Label
 
 
 class Task(models.Model):
+
     name = models.CharField(
         max_length=100,
         unique=True,

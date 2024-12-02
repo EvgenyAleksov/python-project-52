@@ -10,6 +10,7 @@ from task_manager.mixins import (ProjectLoginRequiredMixin,
 
 
 class StatusListView(ListView):
+
     model = Status
     template_name = 'statuses/statuses.html'
     context_object_name = 'statuses'

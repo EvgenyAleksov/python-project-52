@@ -7,6 +7,7 @@ from task_manager.statuses.models import Status
 
 class TestStatuses(TestCase):
 
+
     def setUp(self):
         User.objects.create(
             first_name='T1',

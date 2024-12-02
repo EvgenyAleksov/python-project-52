@@ -7,6 +7,7 @@ from task_manager.labels.models import Label
 
 class TestLabels(TestCase):
 
+
     def setUp(self):
         User.objects.create(
             first_name='T1',

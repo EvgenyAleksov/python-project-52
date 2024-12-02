@@ -8,6 +8,7 @@ from task_manager.tasks.models import Task
 
 class TestTasks(TestCase):
 
+
     def setUp(self):
         User.objects.create(
             first_name='T1',

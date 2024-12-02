@@ -8,6 +8,7 @@ from task_manager.labels.models import Label
 
 
 class TaskFilter(FilterSet):
+
     status = ModelChoiceFilter(queryset=Status.objects.all(), label='Статус')
     executor = ModelChoiceFilter(queryset=User.objects.all(),
                                  label='Исполнитель')

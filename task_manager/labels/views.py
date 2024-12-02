@@ -11,6 +11,7 @@ from task_manager.mixins import (ProjectLoginRequiredMixin,
 
 
 class LabelListView(ListView):
+
     model = Label
     template_name = 'labels/labels.html'
     context_object_name = 'labels'

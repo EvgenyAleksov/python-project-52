@@ -8,6 +8,7 @@ from django.db.models import ProtectedError
 
 
 class ProjectRedirectURLMixin(RedirectURLMixin):
+
     next_page = None
     success_message = None
     info_message = None

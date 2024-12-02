@@ -14,8 +14,8 @@ from task_manager.mixins import (ProjectLoginRequiredMixin,
                                  HasPermissionTaskDeleteMixin)
 
 
-class TaskListView(FilterView,
-                   ListView):
+class TaskListView(FilterView, ListView):
+
     model = Task
     filterset_class = TaskFilter
     template_name = 'tasks/tasks.html'
