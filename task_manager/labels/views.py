@@ -22,13 +22,13 @@ class LabelCreateView(ProjectLoginRequiredMixin,
                       CreateView):
     model = Label
     form_class = LabelForm
-    template_name = 'create.html'
+    template_name = 'labels/label_create.html'
     success_url = reverse_lazy('label_list')
     success_message = _('Label is successfully created')
-    extra_context = {
-        'title': _('Create label'),
-        'button_text': _('Create'),
-    }
+    # extra_context = {
+    #     'title': _('Create label'),
+    #     'button_text': _('Create'),
+    # }
 
 
 class LabelUpdateView(ProjectLoginRequiredMixin,
@@ -36,13 +36,13 @@ class LabelUpdateView(ProjectLoginRequiredMixin,
                       UpdateView):
     model = Label
     form_class = LabelForm
-    template_name = 'create.html'
+    template_name = 'labels/label_update.html'
     success_url = reverse_lazy('label_list')
     success_message = _('Label is successfully updated')
-    extra_context = {
-        'title': _('Update label'),
-        'button_text': _('Update'),
-    }
+    # extra_context = {
+    #     'title': _('Update label'),
+    #     'button_text': _('Update'),
+    # }
 
 
 class LabelDeleteView(ProjectLoginRequiredMixin,

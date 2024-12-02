@@ -21,13 +21,13 @@ class StatusCreateView(ProjectLoginRequiredMixin,
                        CreateView):
     model = Status
     form_class = StatusForm
-    template_name = 'create.html'
+    template_name = 'statuses/status_create.html'
     success_url = reverse_lazy('status_list')
     success_message = _('Status is successfully created')
-    extra_context = {
-        'title': _('Create status'),
-        'button_text': _('Create'),
-    }
+    # extra_context = {
+    #     'title': _('Create status'),
+    #     'button_text': _('Create'),
+    # }
 
 
 class StatusUpdateView(ProjectLoginRequiredMixin,
@@ -35,13 +35,13 @@ class StatusUpdateView(ProjectLoginRequiredMixin,
                        UpdateView):
     model = Status
     form_class = StatusForm
-    template_name = 'create.html'
+    template_name = 'statuses/status_update.html'
     success_url = reverse_lazy('status_list')
     success_message = _('Status is successfully updated')
-    extra_context = {
-        'title': _('Update status'),
-        'button_text': _('Update'),
-    }
+    # extra_context = {
+    #     'title': _('Update status'),
+    #     'button_text': _('Update'),
+    # }
 
 
 class StatusDeleteView(ProjectLoginRequiredMixin,

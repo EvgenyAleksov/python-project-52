@@ -28,11 +28,11 @@ class TaskCreateView(ProjectLoginRequiredMixin,
                      CreateView):
     model = Task
     form_class = TaskForm
-    template_name = 'create.html'
-    extra_context = {
-        'title': _('Create task'),
-        'button_text': _('Create'),
-    }
+    template_name = 'tasks/task_create.html'
+    # extra_context = {
+    #     'title': _('Create task'),
+    #     'button_text': _('Create'),
+    # }
     success_url = reverse_lazy('task_list')
     success_message = _('Task is successfully created')
 
@@ -47,11 +47,11 @@ class TaskUpdateView(ProjectLoginRequiredMixin,
                      UpdateView):
     model = Task
     form_class = TaskForm
-    template_name = 'create.html'
-    extra_context = {
-        'title': _('Update task'),
-        'button_text': _('Update'),
-    }
+    template_name = 'tasks/task_update.html'
+    # extra_context = {
+    #     'title': _('Update task'),
+    #     'button_text': _('Update'),
+    # }
     success_url = reverse_lazy('task_list')
     success_message = _('Task is successfully updated')
 
