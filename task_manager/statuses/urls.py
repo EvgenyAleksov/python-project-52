@@ -5,7 +5,6 @@ from task_manager.statuses.views import (StatusListView, StatusCreateView,
 
 
 urlpatterns = [
-
     path('', StatusListView.as_view(), name='status_list'),
     path('create/', StatusCreateView.as_view(), name='status_create'),
     path('<int:pk>/update/', StatusUpdateView.as_view(), name='status_update'),
