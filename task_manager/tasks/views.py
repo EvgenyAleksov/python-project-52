@@ -10,7 +10,10 @@ from django.views.generic import (
 )
 from django_filters.views import FilterView
 
-from task_manager.mixins import HasPermissionTaskDeleteMixin, ProjectLoginRequiredMixin
+from task_manager.mixins import (
+    HasPermissionTaskDeleteMixin,
+    ProjectLoginRequiredMixin,
+)
 from task_manager.tasks.filters import TaskFilter
 from task_manager.tasks.forms import TaskForm
 from task_manager.tasks.models import Task
