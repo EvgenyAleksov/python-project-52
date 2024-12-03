@@ -1,13 +1,13 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from task_manager.users.models import User
-from task_manager.users.forms import UserForm, UserUpdateForm
-from task_manager.mixins import (ProjectLoginRequiredMixin,
+from task_manager.mixins import (EntityProtectedMixin,
                                  HasPermissionUserChangeMixin,
-                                 EntityProtectedMixin)
+                                 ProjectLoginRequiredMixin)
+from task_manager.users.forms import UserForm, UserUpdateForm
+from task_manager.users.models import User
 
 
 class UsersListView(ListView):

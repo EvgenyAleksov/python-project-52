@@ -1,10 +1,10 @@
 from django.contrib import messages
-from django.contrib.auth.views import RedirectURLMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.urls import reverse_lazy
-from django.shortcuts import redirect
-from django.views.generic.edit import DeletionMixin
+from django.contrib.auth.views import RedirectURLMixin
 from django.db.models import ProtectedError
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.views.generic.edit import DeletionMixin
 
 
 class ProjectRedirectURLMixin(RedirectURLMixin):
