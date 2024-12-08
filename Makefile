@@ -26,7 +26,7 @@ shell:
 
 .PHONY: lint
 lint:
-	ruff check task_manager  
+	ruff check ./task_manager/  
 
 dev:
 	$(MANAGE) runserver
