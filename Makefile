@@ -25,7 +25,7 @@ shell:
 	@$(MANAGE) shell_plus --ipython
 
 lint:
-	ruff check task_manager
+	poetry run ruff check task_manager
 
 dev:
 	$(MANAGE) runserver
