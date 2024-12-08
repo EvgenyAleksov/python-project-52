@@ -24,6 +24,7 @@ migrate:
 shell:
 	@$(MANAGE) shell_plus --ipython
 
+.PHONY: lint
 lint:
 	poetry run ruff check task_manager
 
