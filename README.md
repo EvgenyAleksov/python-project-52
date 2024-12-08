@@ -45,7 +45,7 @@ cd python-project-52
 make install
 ```
 
-3. Создать '.env` в корне директории:
+3. Создать `.env` в корне директории:
 ```
 DATABASE_URL= #Для локальной разработки используется sqlite3, для деплоя PostgreSQL  
 SECRET_KEY= #Необходимо задать/сгенерировать для Django  
