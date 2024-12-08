@@ -24,9 +24,9 @@ migrate:
 shell:
 	@$(MANAGE) shell_plus --ipython
 
-.PHONY: lint
-lint:
-	uv run ruff check
+# .PHONY: lint
+# lint:
+# 	ruff check
 
 dev:
 	$(MANAGE) runserver
