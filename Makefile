@@ -25,7 +25,7 @@ shell:
 	@$(MANAGE) shell_plus --ipython
 
 lint:
-	ruff check
+	ruff check task_manager
 
 dev:
 	$(MANAGE) runserver
