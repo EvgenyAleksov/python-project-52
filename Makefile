@@ -26,7 +26,7 @@ shell:
 
 .PHONY: lint
 lint:
-	ruff check .
+	.lint-ruff
 
 dev:
 	$(MANAGE) runserver
