@@ -29,10 +29,6 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     template_name = 'users/user_create.html'
     success_url = reverse_lazy('login')
     success_message = _('User is successfully registered')
-    # extra_context = {
-    #     'title': _('Sign Up'),
-    #     'button_text': _('Register'),
-    # }
 
 
 class UserUpdateView(ProjectLoginRequiredMixin,
@@ -42,10 +38,6 @@ class UserUpdateView(ProjectLoginRequiredMixin,
     model = User
     form_class = UserUpdateForm
     template_name = 'users/user_update.html'
-    # extra_context = {
-    #     'title': _('Update user'),
-    #     'button_text': _('Update'),
-    # }
     success_url = reverse_lazy('users')
     success_message = _('User is successfully updated')
     denied_url = reverse_lazy('users')

@@ -9,51 +9,44 @@ from task_manager.mixins import EntityProtectedMixin, ProjectLoginRequiredMixin
 
 
 class LabelListView(ListView):
-
     model = Label
-    template_name = 'labels/labels.html'
-    context_object_name = 'labels'
+    template_name = "labels/labels.html"
+    context_object_name = "labels"
 
 
-class LabelCreateView(ProjectLoginRequiredMixin,
-                      SuccessMessageMixin,
-                      CreateView):
-    model = Label
-    form_class = LabelForm
-    template_name = 'labels/label_create.html'
-    success_url = reverse_lazy('label_list')
-    success_message = _('Label is successfully created')
-    # extra_context = {
-    #     'title': _('Create label'),
-    #     'button_text': _('Create'),
-    # }
-
-
-class LabelUpdateView(ProjectLoginRequiredMixin,
-                      SuccessMessageMixin,
-                      UpdateView):
+class LabelCreateView(
+    ProjectLoginRequiredMixin, SuccessMessageMixin, CreateView
+):
     model = Label
     form_class = LabelForm
-    template_name = 'labels/label_update.html'
-    success_url = reverse_lazy('label_list')
-    success_message = _('Label is successfully updated')
-    # extra_context = {
-    #     'title': _('Update label'),
-    #     'button_text': _('Update'),
-    # }
+    template_name = "labels/label_create.html"
+    success_url = reverse_lazy("label_list")
+    success_message = _("Label is successfully created")
 
 
-class LabelDeleteView(ProjectLoginRequiredMixin,
-                      SuccessMessageMixin,
-                      EntityProtectedMixin,
-                      DeleteView):
+class LabelUpdateView(
+    ProjectLoginRequiredMixin, SuccessMessageMixin, UpdateView
+):
     model = Label
-    template_name = 'delete.html'
+    form_class = LabelForm
+    template_name = "labels/label_update.html"
+    success_url = reverse_lazy("label_list")
+    success_message = _("Label is successfully updated")
+
+
+class LabelDeleteView(
+    ProjectLoginRequiredMixin,
+    SuccessMessageMixin,
+    EntityProtectedMixin,
+    DeleteView,
+):
+    model = Label
+    template_name = "delete.html"
     extra_context = {
-        'title': _('Delete label'),
-        'button_text': _('Yes, delete'),
+        "title": _("Delete label"),
+        "button_text": _("Yes, delete"),
     }
-    success_url = reverse_lazy('label_list')
-    success_message = _('Label is successfully deleted')
-    denied_url = reverse_lazy('label_list')
-    protected_message = _('Unable to delete a label because it is being used')
+    success_url = reverse_lazy("label_list")
+    success_message = _("Label is successfully deleted")
+    denied_url = reverse_lazy("label_list")
+    protected_message = _("Unable to delete a label because it is being used")

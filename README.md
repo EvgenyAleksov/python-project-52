@@ -39,29 +39,30 @@
 https://github.com/EvgenyAleksov/python-project-52.git
 ```
 
-2. Прейти в директорию проекта:
+2. Прейти в директорию проекта и установить его:
 ```
 cd python-project-52
-```
-
-3. Установить проект:
-```
 make install
 ```
 
-4. Для локального запуска используется База данных SQLite.
-
-
-
-## Проверка кода проекта линтером _flake8_
+3. Создать '.env` в корне директории:
 ```
-poetry run flake8 page_analyzer
+DATABASE_URL= #Для локальной разработки используется sqlite3, для деплоя PostgreSQL  
+SECRET_KEY= #Необходимо задать/сгенерировать для Django  
+ROLLBAR_ACCESS_TOKEN= # Необходим для сервиса Rollbar Error Tracker
+```
+
+
+## Проверка кода проекта линтером _ruff_
+```
+ruff check task_manager
 ```
 
 
 ## Запуск
 Локально:
 ```
+make migrate
 make dev
 ```
 

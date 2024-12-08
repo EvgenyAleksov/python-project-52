@@ -32,9 +32,9 @@ class ProjectLoginRequiredMixin(LoginRequiredMixin):
 
 
 class ProjectUserPassesTestMixin(UserPassesTestMixin):
+    """Запрет на изменение/удаление чужих Данных
     """
-    Запрет на изменение/удаление чужих Данных
-    """
+
     denied_url = None
     permission_denied_message = None
 
@@ -47,25 +47,25 @@ class ProjectUserPassesTestMixin(UserPassesTestMixin):
 
 
 class HasPermissionUserChangeMixin(ProjectUserPassesTestMixin):
+    """Запрет на изменение/удаление другого Пользователя
     """
-    Запрет на изменение/удаление другого Пользователя
-    """
+
     def test_func(self):
         return self.get_object() == self.request.user
 
 
 class HasPermissionTaskDeleteMixin(ProjectUserPassesTestMixin):
+    """Запрет на изменение/удаление чужой Задачи
     """
-    Запрет на изменение/удаление чужой Задачи
-    """
+
     def test_func(self):
         return self.get_object().author == self.request.user
 
 
 class EntityProtectedMixin(DeletionMixin):
+    """Запрет на удаление используемых Объектов
     """
-    Запрет на удаление используемых Объектов
-    """
+
     denied_url = None
     protected_message = None
 
