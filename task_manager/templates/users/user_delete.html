@@ -1,12 +1,5 @@
-{% extends 'base.html' %}
-{% load django_bootstrap5 %}
+{% extends 'delete.html' %}
 {% load i18n %}
 
-{% block content %}
-<h1 class="my-4">{% trans 'Delete user' %}</h1>
-<form method="post">
-    {% csrf_token %}
-    <p>{% trans 'Are you sure you want to delete ' %} {{ user.username }}?</p>
-    <input class="btn btn-danger" type="submit" value="{% trans 'Yes, delete' %}">
-</form>
-{% endblock %}
+{% block heading %}{% trans 'Delete user' %}{% endblock %}
+{% block object_name %}{{ object.username }}{% endblock %}
