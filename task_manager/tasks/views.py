@@ -59,11 +59,7 @@ class TaskDeleteView(ProjectLoginRequiredMixin,
                      HasPermissionTaskDeleteMixin,
                      DeleteView):
     model = Task
-    template_name = 'delete.html'
-    extra_context = {
-        'title': _('Delete task'),
-        'button_text': _('Yes, delete'),
-    }
+    template_name = 'tasks/task_delete.html'
     success_url = reverse_lazy('task_list')
     success_message = _('Task is successfully deleted')
     denied_url = reverse_lazy('task_list')

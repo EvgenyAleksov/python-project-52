@@ -40,11 +40,7 @@ class StatusDeleteView(ProjectLoginRequiredMixin,
                        EntityProtectedMixin,
                        DeleteView):
     model = Status
-    template_name = 'delete.html'
-    extra_context = {
-        'title': _('Delete status'),
-        'button_text': _('Yes, delete'),
-    }
+    template_name = 'statuses/status_delete.html'
     success_url = reverse_lazy('status_list')
     success_message = _('Status is successfully deleted')
     denied_url = reverse_lazy('status_list')

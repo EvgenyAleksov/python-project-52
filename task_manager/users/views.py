@@ -53,11 +53,7 @@ class UserDeleteView(
     DeleteView,
 ):
     model = User
-    template_name = "delete.html"
-    extra_context = {
-        "title": _("Delete user"),
-        "button_text": _("Yes, delete"),
-    }
+    template_name = "users/user_delete.html"
     success_url = reverse_lazy("users")
     success_message = _("User is successfully deleted")
     denied_url = reverse_lazy("users")

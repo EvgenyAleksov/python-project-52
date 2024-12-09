@@ -41,11 +41,7 @@ class LabelDeleteView(
     DeleteView,
 ):
     model = Label
-    template_name = "delete.html"
-    extra_context = {
-        "title": _("Delete label"),
-        "button_text": _("Yes, delete"),
-    }
+    template_name = "labels/label_delete.html"
     success_url = reverse_lazy("label_list")
     success_message = _("Label is successfully deleted")
     denied_url = reverse_lazy("label_list")
